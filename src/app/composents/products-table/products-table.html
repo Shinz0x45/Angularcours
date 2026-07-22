@@ -9,35 +9,22 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Produit 1</td>
-            <td>Description du produit 1</td>
-            <td>10 €</td>
-            <td>
-                <button class="btn btn-sm btn-primary">Modifier</button>
-                <button class="btn btn-sm btn-danger">Supprimer</button>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Produit 2</td>
-            <td>Description du produit 2</td>
-            <td>15 €</td>
-            <td>
-                <button class="btn btn-sm btn-primary">Modifier</button>
-                <button class="btn btn-sm btn-danger">Supprimer</button>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Produit 3</td>
-            <td>Description du produit 3</td>
-            <td>20 €</td>
-            <td>
-                <button class="btn btn-sm btn-primary">Modifier</button>
-                <button class="btn btn-sm btn-danger">Supprimer</button>
-            </td>
-        </tr>
+        @for (product of products; track product.id; let i = $index) {
+            <tr>
+                <th scope="row">{{ product.id }}</th>
+                <td>{{ product.nom }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.prix }} €</td>
+                <td>
+                    <button class="btn btn-sm btn-primary">Modifier</button>
+                    <button class="btn btn-sm btn-danger">Supprimer</button>
+                </td>
+            </tr>
+        }
+        @empty {
+            <tr>
+                <td colspan="5">Aucun produit disponible.</td>
+            </tr>
+        }
     </tbody>
 </table>
