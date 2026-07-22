@@ -4,16 +4,25 @@
 
     <!-- Menu de navigation -->
     <nav class="menu" aria-label="Menu de navigation">
-        <a routerLink="">Acceuil</a>
-        <a routerLink="/about">À propos</a>
-        <a routerLink="/products">Produits</a>
-        <a routerLink="/dashboard">Dashboard</a>
-        <a routerLink="/addProduct">Ajout-Produit</a>
-        <a routerLink="/contact">Contact</a>
-        <a routerLink="/inscription">Inscirption</a>
-        <a routerLink="/connexion">Connexion</a>
-        <a routerLink="/cart">
+        <ul>
+        <li><a routerLink="">Acceuil</a></li>
+        <li><a routerLink="/about">À propos</a></li>
+        <li><a routerLink="/products">Produits</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dashboard
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="/addProduct">Ajout-Produit</a></li>
+            <li><a class="dropdown-item" routerLink="/admin">Admin</a></li>
+            </ul>
+        </li>
+        <li><a routerLink="/contact">Contact</a></li>
+        <li><a routerLink="/inscription">Inscirption</a></li>
+        <li><a routerLink="/connexion">Connexion</a></li>
+        <li><a routerLink="/cart">
             <i class="fa-solid fa-cart-shopping"></i>
-        </a>
+        </a></li>
+        </ul>
     </nav>
 </header>

@@ -4,6 +4,8 @@ import { Products } from './composents/products/products';
 import { About } from './composents/about/about';
 import { Connexion } from './composents/connexion/connexion';
 import { Inscription } from './composents/inscription/inscription';
+import { AddProduct } from './composents/add-product/add-product';
+import { Admin } from './composents/admin/admin';
 
 
 export const routes: Routes = [ 
@@ -12,4 +14,6 @@ export const routes: Routes = [
     { path: 'about', component: About },
     { path: 'connexion', component: Connexion },
     { path: 'inscription', component: Inscription },
+    { path: 'addProduct', component: AddProduct },
+    { path: 'admin', component: Admin },
 ];
