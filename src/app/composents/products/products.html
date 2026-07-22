@@ -1,0 +1,47 @@
+        <section>
+            <h2>Nos Produits</h2>
+            <table aria-label="liste des produits">
+                <thead>
+                    <tr>
+                        <th style="text-transform: uppercase;">Catégories</th>
+                        <th>Produit</th>
+                        <th>Prix</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td rowspan="3">Homme</td>
+                        <td>Chemise</td>
+                        <td>20 </td>
+                        <td><button>Acheter</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>T-Shirt</td>
+                        <td>15 </td>
+                        <td><button name="Acheter" aria_label="Acheter T-Shirt">Acheter</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>T-Shirt</td>
+                        <td>15 </td>
+                        <td><button>Acheter</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>Femme</td>
+                        <td>Robe</td>
+                        <td>30</td>
+                        <td><button>Acheter</button></td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="3">Promotion</td>
+                        <td><button id="btnDetails">Voir Détails</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <app-product-card></app-product-card>
+        </section>

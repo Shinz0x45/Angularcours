@@ -1,1 +1,428 @@
 /* You can add global styles to this file, and also import other style files */
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(241, 236, 236, 0.885);
+}
+
+h1 {
+    color: white;
+    font-size: 40px;
+}
+
+p {
+    line-height: 1.6;
+}
+
+
+/* header & footer */
+.site-header, .site-footer {
+    text-align:center;
+    background-color: rgb(24, 24, 94);
+    /* padding-top: 20px;
+    padding-right: 10px;
+    padding-bottom: 0;
+    padding-left: 5px; */
+    padding: 20px 10px 20px 10px;
+    /* padding: 20px 10px; */
+    /* margin-left: 50px; */
+}
+
+.site-header a, .site-footer a,  .site-footer h3{
+    color: white;
+    text-decoration: none;
+}
+
+.site-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+a.current {
+    color: rgb(123, 29, 29);
+    text-decoration: underline;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+/* Main */
+main {
+    max-width: 1200px;
+    min-height: 550px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.block-img {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+section {
+    background-color: white ;
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.product-img {
+    width: 200px;
+    height: 200px;
+    margin: 10px 0;
+}
+
+button {
+    padding: 8px 15px;
+    background-color: rgb(9, 9, 129);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+p > span {
+    color: rgb(121, 25, 25);
+    font-weight: 900;
+}
+
+/* .mot-cle {
+    color: rgb(121, 25, 25);
+    font-weight: 900;
+} */
+
+/* Tableau */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+caption {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+thead {
+    background-color: antiquewhite;
+}
+
+th, td {
+    /* border-width: 5px;
+    border-style: solid;
+    border-color: gray; */
+    border: 2px solid gray;
+    padding: 10px;
+    text-align: center;
+}
+
+
+.promotion {
+    background: rgb(245, 230, 144);
+    padding: 20px;
+    margin-top: 15px;
+    border-left: 4px solid rgb(239, 184, 45);
+    border-radius: 50px;
+}
+/* Footer */
+/* cible tous les <p> qui sont à l'interieur d'un footer */
+.site-footer p {
+    color: white;
+    font-size: 20px;
+}
+
+/* cible le <p> qui vient juste aprés le footer, au meme niveau (pas à l'interierur) */
+.site-footer + p {
+    color: blueviolet;
+}
+
+/* cible seulemnent les <p> qui sont enfants directs du footer */
+/* .site-footer > p {
+    color:red;
+} */
+
+h1 {
+    color: white;
+    font-size: 40px;
+    text-align: center;
+}
+
+p {
+    line-height: 1.6;
+}
+
+/* Header & Footer */
+.site-header, .site-footer {
+    text-align: center;
+    background-color: rgb(24, 24, 94);
+    padding: 20px 10px;
+}
+
+.site-header a, .site-footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+a.current {
+    color: rgb(208, 63, 63);
+    text-decoration: underline;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+/* Main */
+main {
+    max-width: 1200px;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.category-card {
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 150px;
+}
+
+.category-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
+.category-card span {
+    display: block;
+    padding: 10px 0;
+    font-weight: bold;
+}
+
+.category-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+
+  article {
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 300px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+article {
+    background-color: #ececec;
+}
+
+/* Titres des produits */
+article h3 {
+    color: #333 !important;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Description et prix */
+article p {
+    margin: 5px 0;
+    text-align: center;
+}
+
+article p em {
+    font-style: normal;
+    color: darkorange;
+    font-weight: bold;
+}
+
+article p:last-of-type {
+    color: darkred;
+    font-weight: 900;
+    font-size: 18px;
+}
+
+/* Image produit */
+article img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border: 2px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+/* Bouton Acheter */
+article button {
+    padding: 8px 15px;
+    background-color: rgb(9, 9, 129);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+ article:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+ }
+
+ #products {
+    color: #3498db;
+ }
+  /* ===== Formulaire ===== */
+form {
+  background-color: #fff;
+  padding: 20px;
+  max-width: 500px;
+  margin: 20px auto; /* centre le formulaire */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+/* ===== Fieldset ===== */
+fieldset {
+  border: 1px solid #ccc;
+  padding: 15px 50px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+/* ===== Legend ===== */
+legend {
+  font-weight: bold;
+  padding: 0 5px;
+}
+
+/* ===== Chaque div de champ ===== */
+form div {
+  margin-bottom: 15px;
+}
+
+/* ===== Labels ===== */
+label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* ===== Inputs et Selects ===== */
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #999;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* ===== Radios et Checkboxes ===== */
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+/* ===== Bouton ===== */
+button {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 20px; /* vertical | horizontal */
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
+/* button:hover {
+    background-color: green;
+} */
+
+/* button:active {
+    background-color: red;
+} */
+
+/* button:focus {
+    background-color: #999;
+} */
+
+h2 {
+    color: #d86800;
+    text-align: center;
+    margin: 10px;
+}
+.inscription-section, .contact-section, .connexion-section {
+    background-color: rgba(241, 236, 236, 0.885);
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+}
+
+/* ul {
+    text-align: center;
+    list-style-position: inside;
+} */
+
+ul {
+    width: 200px;
+    margin: 0 auto;
+    list-style: none;
+}
+
+.product-container {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-wrap: wrap;
+    gap:10px;
+}
+
+#carouselExampleIndicators {
+  height:100px;
+}
+
+.banner {
+    height: 600px;
+    /* background-image: url(../images/slider-bg.jpg); */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.banner h2{
+    margin: 0;
+    text-align: left;
+    color:#d86800;
+}
+
+.btn-lien {
+    background-color: #d86800;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.site-description {
+    margin-bottom: 20px;
+}
