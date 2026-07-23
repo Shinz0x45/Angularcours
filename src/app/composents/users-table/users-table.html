@@ -6,39 +6,27 @@
       <th scope="col">Nom</th>
       <th scope="col">Prénom</th>
       <th scope="col">Mail</th>
+      <th scope="col">Role</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
+    @for (user of users ; track user.id; let i=$index) {
     <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <th scope="row">{{ user.id }}</th>
+      <td>{{ user.nom }}</td>
+      <td>{{ user.prenom }}</td>
+      <td>{{ user.mail }}</td>
+      <td [style.color]="user.role==='Admin' ? 'red' : 'blue'">{{ user.role }}</td>
       <td>
         <button class="btn btn-sm btn-primary">Modifier</button>
         <button class="btn btn-sm btn-danger">Supprimer</button>
       </td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td>
-        <button class="btn btn-sm btn-primary">Modifier</button>
-        <button class="btn btn-sm btn-danger">Supprimer</button>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>John</td>
-      <td>Doe</td>
-      <td>@social</td>
-      <td>
-        <button class="btn btn-sm btn-primary">Modifier</button>
-        <button class="btn btn-sm btn-danger">Supprimer</button>
-      </td>
-    </tr>
+    </tr>}
+    @empty {
+      <tr>
+        <td colspan="6">Aucun utilisateur disponible.</td>
+      </tr>
+    }
   </tbody>
-</table>
+  </table>
