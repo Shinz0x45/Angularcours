@@ -1,67 +1,106 @@
-<form class="formulaire" id="inscription-form">
-                <h2>Inscription</h2>
+<main>
+    <form class="form" id="inscription-form" [formGroup]="inscriptionForm" (ngSubmit)="inscription()">
+        <h2>Inscription</h2>
 
-                <fieldset class="inscription-fieldset">
-                    <legend>Informations Personnelles</legend>
-                    <div>
-                        <label for="nom">Nom :</label>
-                        <input type="text" name="nom" id="nom" placeholder="Votre nom" required>
-                    </div>
+        <fieldset class="inscription-fieldset">
+            <legend>Informations Personnelles</legend>
+            <div>
+                <label for="nom">Nom :</label>
+                <input type="text" name="nom" id="nom" formControlName="nom" placeholder="Votre nom" required>
+                    @if(inscriptionForm.get('nom')?.invalid && (inscriptionForm.get('nom')?.touched || inscriptionForm.get('nom')?.dirty)) {}
+                    @if(inscriptionForm.get('nom')?.errors?.['required']) {
+                        <div class="text-danger">
+                            Le nom est requis.
+                        </div>
+                    }@else if (inscriptionForm.get('nom')?.errors?.['minlength']) {
+                        <div class="text-danger">
+                            3 Caractères minimum.
+                        </div>
+                    }
+            </div>
 
-                    <div>
-                        <label for="email">Email :</label>
-                        <input type="email" id="email" placeholder="exemple@gmail.com" required>
-                    </div>
+                        <div>
+                <label for="prenom">Prenom :</label>
+                <input type="text" name="prenom" id="prenom" formControlName="prenom" placeholder="Votre prenom" required>
+            </div>
 
-                    <div>
-                        <label for="mdp">Mot de passe :</label>
-                        <input type="password" id="mdp" placeholder="Votre mot de passe" required>
-                    </div>
-                    <div>
-                        <label for="confirmMdp">Confirmation Mot de passe :</label>
-                        <input type="password" id="confirmMdp" placeholder="Confirmer le mot de passe" required>
-                    </div>
-                </fieldset>
+            <div>
+                <label for="email">Email :</label>
+                <input type="email" id="email" formControlName="email" placeholder="exemple@gmail.com" required>
+                @if(inscriptionForm.get('email')?.invalid && (inscriptionForm.get('email')?.touched || inscriptionForm.get('email')?.dirty)) {
+                    @if(inscriptionForm.get('email')?.errors?.['required']) {
+                        <div class="text-danger">
+                            L'email est requis.
+                        </div>
+                    }@else if (inscriptionForm.get('email')?.errors?.['email']) {
+                        <div class="text-danger">
+                            Veuillez entrer une adresse email valide : exemple@mail.com
+                        </div>
+                    }
+                }
+            </div>
 
-                <fieldset class="inscription-fieldset">
-                    <legend>Informations Supplémentaires</legend>
-                    <!-- Radio -->
-                    <div>
-                        <label>Genre :</label>
-                        <input type="radio" id="femme" name="genre" value="femme">
-                        <label for="femme"> Femme </label>
+            <div>
+                <label for="mdp">Mot de passe :</label>
+                <input type="password" id="mdp" formControlName="mdp" placeholder="Votre mot de passe" required>
+                @if(inscriptionForm.get('mdp')?.invalid && (inscriptionForm.get('mdp')?.touched || inscriptionForm.get('mdp')?.dirty)) {}
+                    @if(inscriptionForm.get('mdp')?.errors?.['required']) {
+                        <div class="text-danger">
+                            Le mot de passe est requis.
+                        </div>
+                    }@else if (inscriptionForm.get('mdp')?.errors?.['minlength'] || inscriptionForm.get('mdp')?.errors?.['maxlength']) {
+                        <div class="text-danger">
+                            Votre mot de passe doit contenir au moins 6 caractères et ne doit pas dépasser 20 caractères.
+                        </div>
+                    }
+                
+            </div>
+            <div>
+                <label for="confirmMdp">Confirmez votre Mot de passe :</label>
+                <input type="password" id="confirmMdp" formControlName="confirmMdp" placeholder="Confirmer le mot de passe" required>
+            </div>
+        </fieldset>
 
-                        <input type="radio" id="homme" name="genre" value="homme">
-                        <label for="homme"> Homme </label>
-                    </div>
+        <fieldset class="inscription-fieldset">
+            <legend>Informations Supplémentaires</legend>
+            <!-- Radio -->
+            <div>
+                <label>Genre :</label>
+                <input type="radio" id="femme" name="genre" formControlName="genre" value="femme">
+                <label for="femme"> Femme </label>
 
-                    <!-- Checkbox -->
-                    <div>
-                        <label>Intérets :</label>
-                        <input type="checkbox" name="interets" id="vetements" value="vetements">
-                        <label for="vetements">vetements</label>
+                <input type="radio" id="homme" name="genre" formControlName="genre" value="homme">
+                <label for="homme"> Homme </label>
+            </div>
 
-                        <input type="checkbox" name="interets" id="accessoires" value="accessoires">
-                        <label for="accessoires">Accessoires</label>
-                    </div>
+            <!-- Checkbox -->
+            <div>
+                <label>Intérets :</label>
+                <input type="checkbox" name="interets" id="vetements" formControlName="vetements" value="vetements">
+                <label for="vetements">vetements</label>
 
-                    <!-- Pays -->
-                    <div>
-                        <label for="pays">Pays :</label>
-                        <select name="pays" id="pays">
-                            <option value="france">France</option>
-                            <option value="tunisie">Tunisie</option>
-                            <option value="autre">Autre</option>
-                        </select>
-                    </div>
-                </fieldset>
+                <input type="checkbox" name="interets" id="accessoires" formControlName="accessoires" value="accessoires">
+                <label for="accessoires">Accessoires</label>
+            </div>
 
-                <button type="submit">S'inscrire</button>
+            <!-- Pays -->
+            <div>
+                <label for="pays">Pays :</label>
+                <select name="pays" id="pays" formControlName="pays">
+                    <option value="france">France</option>
+                    <option value="tunisie">Tunisie</option>
+                    <option value="autre">Autre</option>
+                </select>
+            </div>
+        </fieldset>
 
-                <div>
-                    <p>Vous avez déjà un compte ?
-                        <a routerLink="/connexion">Se connecter</a>
-                    </p>
-                </div>
+        <button type="submit">S'inscrire</button>
 
-            </form>
+        <div>
+            <p>Vous avez déjà un compte ?
+                <a routerLink="/connexion">Se connecter</a>
+            </p>
+        </div>
+
+    </form>
+</main>
