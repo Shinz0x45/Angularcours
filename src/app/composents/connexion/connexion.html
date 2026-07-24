@@ -1,19 +1,57 @@
-<main><form class="formulaire" id="connexion-form">
-    <h2>Connexion</h2>
-    <div>
-        <label for="email">Email :</label>
-        <input type="email" id="email" name="email" placeholder="exemple@gmail.com" required>
-    </div>
+<main>
+    <form [formGroup]="connexionForm" (ngSubmit)="connexion()">
 
-    <div class="form-group">
-        <label for="password" class="form-label">Mot de passe :</label>
-        <input type="password" id="password" name="password" placeholder="Votre mot de passe" required>
-    </div>
+        <div class="form-group">
+            <label for="email" class="form-label">Email :</label>
+            <input type="email" id="email" formControlName="email" placeholder="Votre adresse email">
+            @if(connexionForm.get('email')?.invalid && (connexionForm.get('email')?.touched ||
+            connexionForm.get('email')?.dirty)){
 
-    <button type="submit">Se connecter</button>
+            @if(connexionForm.get('email')?.errors?.['required']){
+            <div class="text-danger">
+                L'email est requis.
+            </div>
+            }
+            @else if(connexionForm.get('email')?.errors?.['email']){
+            <div class="text-danger">
+                Adresse email invalide.
+            </div>
+            }
 
-    <div>
-        <a routerLink="/inscription">Créer un compte</a>
-    </div>
-</form>
+            }
+            @else if(emailInconnu){
+            <div class="text-danger">
+                Email inconnu.
+            </div>
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="password" class="form-label">Mot de passe :</label>
+            <input type="password" id="password" formControlName="mdp" placeholder="Votre mot de passe">
+            
+            @if(connexionForm.get('mdp')?.invalid && (connexionForm.get('mdp')?.touched ||
+            connexionForm.get('mdp')?.dirty)){
+
+            @if(connexionForm.get('mdp')?.errors?.['required']){
+            <div class="text-danger">
+                Le mot de passe est requis.
+            </div>
+            }
+
+            }
+            @else if(motDePasseIncorrect){
+            <div class="text-danger">
+                Mot de passe incorrect.
+            </div>
+            }
+        </div>
+
+        <button type="submit">Se connecter</button>
+
+        <div>
+            <a routerLink="/inscription">Créer un compte</a>
+        </div>
+
+    </form>
 </main>

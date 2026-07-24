@@ -25,7 +25,8 @@ export class Inscription {
       genre: ['', Validators.required],
       vetements: [false],
       accessoires: [false],
-      pays: ['', Validators.required]
+      pays: ['', Validators.required],
+      role: 'Client'
     });
   }
 
@@ -42,12 +43,15 @@ export class Inscription {
       mdp: formValue.mdp,
       genre: formValue.genre,
       interets: interets,
-      pays: formValue.pays
+      pays: formValue.pays,
+      role: formValue.role || 'Client',
+      dateInscription: new Date().toLocaleString('fr-FR')
     }
     this.users = JSON.parse(localStorage.getItem('users') || '[]');
     this.users.push(userFinal);
     localStorage.setItem('users', JSON.stringify(this.users));
     alert('Inscription réussie !');
+    this.inscriptionForm.reset()
   }
 
 }

@@ -1,16 +1,52 @@
 <main>
-    <form class="formulaire">
-        <h2>Contactez-Nous</h2>
+    <form [formGroup]="contactForm" (ngSubmit)="envoyer()">
 
-        <label for="nom">Nom :</label>
-        <input type="text" id="nom" placeholder="Votre nom" required> <br>
+    <label for="nom">Nom :</label>
+    <input type="text" id="nom" formControlName="nom" placeholder="Votre nom">
 
-        <label for="email">Email :</label>
-        <input type="email" id="email" placeholder="exemple@gmail.com" required> <br>
+    @if(contactForm.get('nom')?.invalid && (contactForm.get('nom')?.touched || contactForm.get('nom')?.dirty)){
+        @if(contactForm.get('nom')?.errors?.['required']){
+            <div class="text-danger">
+                Le nom est requis.
+            </div>
+        } @else if(contactForm.get('nom')?.errors?.['minlength']){
+            <div class="text-danger">
+                3 caractères minimum.
+            </div>
+        }
+    }
 
-        <label for="msg">Message :</label>
-        <textarea rows="2" id="msg" placeholder="Votre message" required></textarea> <br>
+    <br>
 
-        <button type="submit">Envoyer</button>
-    </form>
+    <label for="email">Email :</label>
+    <input type="email" id="email" formControlName="email" placeholder="exemple@exemple.exemple">
+
+    @if(contactForm.get('email')?.invalid && (contactForm.get('email')?.touched || contactForm.get('email')?.dirty)){
+        @if(contactForm.get('email')?.errors?.['required']){
+            <div class="text-danger">
+                L'email est requis.
+            </div>
+        } @else if(contactForm.get('email')?.errors?.['email']){
+            <div class="text-danger">
+                Veuillez entrer un mail valide : exemple@exemple.exemple
+            </div>
+        }
+    }
+
+    <br>
+
+    <label for="msg">Message :</label>
+    <textarea rows="2" id="msg" formControlName="message" placeholder="Votre message"></textarea>
+
+    @if(contactForm.get('message')?.errors?.['maxlength']){
+        <div class="text-danger">
+            Votre message ne doit pas dépasser 255 caractères.
+        </div>
+    }
+
+    <br>
+
+    <button type="submit">Envoyer</button>
+
+</form>
 </main>
