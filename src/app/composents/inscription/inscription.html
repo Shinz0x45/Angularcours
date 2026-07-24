@@ -7,7 +7,7 @@
             <div>
                 <label for="nom">Nom :</label>
                 <input type="text" name="nom" id="nom" formControlName="nom" placeholder="Votre nom" required>
-                    @if(inscriptionForm.get('nom')?.invalid && (inscriptionForm.get('nom')?.touched || inscriptionForm.get('nom')?.dirty)) {}
+                    @if(inscriptionForm.get('nom')?.invalid && (inscriptionForm.get('nom')?.touched || inscriptionForm.get('nom')?.dirty)) {
                     @if(inscriptionForm.get('nom')?.errors?.['required']) {
                         <div class="text-danger">
                             Le nom est requis.
@@ -17,11 +17,19 @@
                             3 Caractères minimum.
                         </div>
                     }
+                }
             </div>
 
                         <div>
                 <label for="prenom">Prenom :</label>
                 <input type="text" name="prenom" id="prenom" formControlName="prenom" placeholder="Votre prenom" required>
+                 @if(inscriptionForm.get('prenom')?.invalid && (inscriptionForm.get('prenom')?.touched || inscriptionForm.get('prenom')?.dirty)) {
+                    @if(inscriptionForm.get('prenom')?.errors?.['required']) {
+                        <div class="text-danger">
+                            Le prénom est requis.
+                        </div>
+                    }
+                }
             </div>
 
             <div>
