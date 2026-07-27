@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -9,8 +9,24 @@ import { RouterLink } from '@angular/router';
 })
 export class Header {
   title: string = 'My Shop';
+  private router = inject(Router);
 
-  calcul(a: number, b: number){
-    return a + b;
+  deconnexion() {
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['/']);
   }
+
+// user: any = null;
+
+//   ngOnInit(): void {
+//     const currentUser = localStorage.getItem('currentUser');
+//     if (currentUser) {
+//       this.user = JSON.parse(currentUser);
+//     }
+//   }
+getCurrentUser() {
+  const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
+  return user;
+}
+
 }

@@ -58,6 +58,7 @@ ul {
     gap: 20px;        /* Espace entre les éléments */
     padding: 0;
     margin: 0;
+    align-items: center;
 }
 
 .dropdown-menu {

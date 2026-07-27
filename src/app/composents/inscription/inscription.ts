@@ -45,6 +45,9 @@ passwordMatchValidator(control: AbstractControl) {
 }
 
   inscription() {
+    // if (this.inscriptionForm.invalid) {
+    //   return;
+    // }
     const formValue = this.inscriptionForm.value;
     let interets = [];
     if (formValue.vetements) interets.push('Vêtements');

@@ -116,7 +116,8 @@
             </div>
         </fieldset>
 
-        <button type="submit">S'inscrire</button>
+        <button type="submit" [disabled]="inscriptionForm.invalid" 
+        [class.btn-disabled]="inscriptionForm.invalid">S'inscrire</button>
 
         <div>
             <p>Vous avez déjà un compte ?

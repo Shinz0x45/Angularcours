@@ -1,6 +1,6 @@
 <header class="site-header">
     <!-- Titre Principale -->
-    <h1>{{title}} {{calcul(5, 3)}}</h1>
+    <h1>{{title}}</h1>
 
     <!-- Menu de navigation -->
     <nav class="menu" aria-label="Menu de navigation">
@@ -18,11 +18,15 @@
             </ul>
         </li>
         <li><a routerLink="/contact">Contact</a></li>
+        @if (!getCurrentUser()) {
         <li><a routerLink="/inscription">Inscirption</a></li>
         <li><a routerLink="/connexion">Connexion</a></li>
-        <li><a routerLink="/cart">
-            <i class="fa-solid fa-cart-shopping"></i>
-        </a></li>
+        }
+        @if (getCurrentUser()) {
+        <li class="user-menu"><span> Bonjour, {{ getCurrentUser()?.prenom }} </span>
+        <a routerLink="/cart"><i class="fa-solid fa-cart-shopping"></i></a>
+        <button type="button" (click)="deconnexion()">Déconnexion</button></li>
+        }        
         </ul>
     </nav>
 </header>

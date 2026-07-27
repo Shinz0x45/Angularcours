@@ -1,0 +1,10 @@
+span{
+    color: white;
+}
+.user-menu {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    color: white;
+    margin-left: 100px;
+}

@@ -19,11 +19,11 @@
             }
 
             }
-            @else if(emailInconnu){
+            <!-- @else if(emailInconnu){
             <div class="text-danger">
                 Email inconnu.
             </div>
-            }
+            } -->
         </div>
 
         <div class="form-group">
@@ -40,15 +40,14 @@
             }
 
             }
-            @else if(motDePasseIncorrect){
-            <div class="text-danger">
-                Mot de passe incorrect.
-            </div>
-            }
-        </div>
+           </div>
 
         <button type="submit">Se connecter</button>
-
+        @if (errorMsg!= '') {
+        <div class="text-danger">
+            {{ errorMsg }}
+        </div>
+        }
         <div>
             <a routerLink="/inscription">Créer un compte</a>
         </div>
