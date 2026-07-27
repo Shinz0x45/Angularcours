@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
 @Component({
@@ -25,9 +25,24 @@ export class Inscription {
       genre: ['', Validators.required],
       vetements: [false],
       accessoires: [false],
-      pays: ['', Validators.required]
-    });
+      pays: ['', Validators.required],
+      role: 'Client'
+    },
+  {
+    validators: this.passwordMatchValidator
+  });
   }
+
+passwordMatchValidator(control: AbstractControl) { 
+
+  const mdp = control.get('mdp')?.value;
+  const confirmMdp = control.get('confirmMdp')?.value;
+
+  if (mdp !== confirmMdp) {return { passwordMismatch: true }};
+
+  return null;
+
+}
 
   inscription() {
     const formValue = this.inscriptionForm.value;
@@ -42,12 +57,15 @@ export class Inscription {
       mdp: formValue.mdp,
       genre: formValue.genre,
       interets: interets,
-      pays: formValue.pays
+      pays: formValue.pays,
+      role: formValue.role || 'Client',
+      dateInscription: new Date().toLocaleString('fr-FR')
     }
     this.users = JSON.parse(localStorage.getItem('users') || '[]');
     this.users.push(userFinal);
     localStorage.setItem('users', JSON.stringify(this.users));
     alert('Inscription réussie !');
+    this.inscriptionForm.reset()
   }
 
 }
