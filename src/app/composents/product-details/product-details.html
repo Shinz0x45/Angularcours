@@ -1,0 +1,15 @@
+<section>
+    <div class="produit-detail-container">
+        <div class="row">
+            <div class="'col-12 col col-md-6"></div>
+                <img [src]="product.image" alt="Photo de {{product.name}}">
+            </div>
+            <div class="'col-12 col col-md-6">
+                <h2>{{product.name}}</h2>
+                <h4>Prix : {{product.price}} €</h4>
+                <p>{{product.description}}</p>
+                <!-- BOUTON AJOUTER AU PANIER -->
+                <button class="btn btn-primary" id="ajout_panier">Ajouter au panier</button>
+            </div>
+        </div>
+</section>

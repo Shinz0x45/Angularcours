@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products-table',
@@ -7,9 +8,19 @@ import { Component } from '@angular/core';
   styleUrl: './products-table.css',
 })
 export class ProductsTable {
-  products: any = [
-    { id: 1, nom: 'Chemise', description: 'Description du produit Chemise', prix: 15 },
-    { id: 2, nom: 'T-shirt', description: 'Description du produit T-shirt', prix: 10 },
-    { id: 3, nom: 'Jeans', description: 'Description du produit Jeans', prix: 20 }
-  ];
+  private router = inject(Router);
+  products: any = [];
+
+  ngOnInit() {
+    this.products = JSON.parse(localStorage.getItem('products') || '[]')
+  }
+
+
+  voirDetails(id: number) {
+    this.router.navigate(['/product-details', id]);
+  }
+
+  edit(id:number){
+    this.router.navigate(['/editProduct', id]);
+  }
 }
