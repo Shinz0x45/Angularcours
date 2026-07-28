@@ -23,16 +23,18 @@ export class AddProduct {
   productID!:number
   isEditMode = false;
 
-  ngOnInit(){
+  ngOnInit() {
+    // Récupérer les données du local storage
+    this.products = JSON.parse(localStorage.getItem('products') || '[]');
     this.productID = Number(this.activatedroute.snapshot.paramMap.get('id'));
     if (this.productID) {
       this.isEditMode = true;
+      this.product = this .products.find((p:any) => p.id === this.productID)
     }
   }
 
   addProduct(productForm:NgForm) {
-// Récupérer les données du local storage
-this.products = JSON.parse(localStorage.getItem('products') || '[]');
+
 // Ajouter id generer a partir de date/heure
 this.product.id = Date.now();
 // Ajout de l'id en +1
