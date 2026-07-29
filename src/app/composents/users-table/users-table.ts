@@ -18,7 +18,7 @@ export class UsersTable {
       id: index + 1,
       nom: user.nom,
       prenom: user.prenom,
-      mail: user.email,
+      email: user.email,
       role: user.role
     }));
 

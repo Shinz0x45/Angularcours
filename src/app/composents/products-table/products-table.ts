@@ -20,7 +20,14 @@ export class ProductsTable {
     this.router.navigate(['/product-details', id]);
   }
 
-  edit(id:number){
+  edit(id: number){
     this.router.navigate(['/editProduct', id]);
+  }
+  deleteProduct(id: number) {
+    let productsTable = this.products.filter((p:any) => p.id !== id);
+    // Mettre a jour le localStorage
+    localStorage.setItem('products', JSON.stringify(productsTable))
+    // Mettre a jour l'affichage du tableau
+    this.products = productsTable
   }
 }

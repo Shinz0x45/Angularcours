@@ -1,11 +1,22 @@
 <section>
-    <form id="productForm" class="form" #productForm="ngForm" (ngSubmit)="addProduct(productForm)">
+    <form id="productForm" class="form" #productForm="ngForm" (ngSubmit)="addOrEditProduct(productForm)">
         <h2>{{isEditMode? 'Modifier le Produit': 'Ajouter un Produit'}}</h2>
 
         <div>
             <label for="productName">Nom du produit : </label>
-            <input type="text" name="productName" id="productName" [(ngModel)]="product.name"
-                placeholder="Le nom de votre prouduit" required>
+            <input type="text" name="productName" id="productName" [(ngModel)]="product.name" placeholder="Le nom de votre prouduit" #name="ngModel" minlength="3" required>
+            @if (name.invalid && (name.touched || name.dirty)){
+                @if(name.errors?.['required']){
+                    <div class = "text-danger">
+                        Ce champ est obligatoire.
+                    </div>
+                }
+                @if (name.errors?.['minlength']) {
+                    <div class = "text-danger">
+                        Nécessite 3 caractères.
+                    </div>
+                }
+            }
         </div>
 
         <div>

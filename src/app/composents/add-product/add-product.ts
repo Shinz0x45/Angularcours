@@ -33,20 +33,25 @@ export class AddProduct {
     }
   }
 
-  addProduct(productForm:NgForm) {
+  addOrEditProduct(productForm: NgForm) {
+    if (this.isEditMode) {
+      localStorage.setItem('products', JSON.stringify(this.products));
+      alert('Produit Modifié !')
 
-// Ajouter id generer a partir de date/heure
-this.product.id = Date.now();
-// Ajout de l'id en +1
-// this.product.id = this.products.length+1;
-// Ajouter le nouveau produit
-this.products.push(this.product);
-// Enregistrer les données mises à jour dans le local storage
-localStorage.setItem('products', JSON.stringify(this.products));
-// Créer une alerte
-alert('Produit ajouté avec succès !');
-// 
-productForm.resetForm();
- }
+    } else {
+      // Ajouter id generer a partir de date/heure
+      this.product.id = Date.now();
+      // Ajout de l'id en +1
+      // this.product.id = this.products.length+1;
+      // Ajouter le nouveau produit
+      this.products.push(this.product);
+      // Enregistrer les données mises à jour dans le local storage
+      localStorage.setItem('products', JSON.stringify(this.products));
+      // Créer une alerte
+      alert('Produit ajouté avec succès !');
+      // 
+      productForm.resetForm();
+    }
 
+  }
 }
