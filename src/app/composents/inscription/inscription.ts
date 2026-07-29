@@ -1,10 +1,11 @@
+import { JsonPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-inscription',
-  imports: [RouterLink, ReactiveFormsModule],
+  imports: [RouterLink, ReactiveFormsModule, JsonPipe],
   templateUrl: './inscription.html',
   styleUrl: './inscription.css',
 })

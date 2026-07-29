@@ -1,9 +1,12 @@
+import { DatePipe, LowerCasePipe, UpperCasePipe } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-about',
-  imports: [],
+  imports: [LowerCasePipe, UpperCasePipe, DatePipe],
   templateUrl: './about.html',
   styleUrl: './about.css',
 })
-export class About {}
+export class About {
+  actualeDate: Date = new Date();
+}

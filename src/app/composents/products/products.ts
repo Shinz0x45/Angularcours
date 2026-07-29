@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { ProductCard } from '../product-card/product-card';
+import { TransformPipe } from '../../pipes/transform-pipe';
 
 @Component({
   selector: 'app-products',
-  imports: [ProductCard],
+  imports: [ProductCard, TransformPipe],
   templateUrl: './products.html',
   styleUrl: './products.css',
 })

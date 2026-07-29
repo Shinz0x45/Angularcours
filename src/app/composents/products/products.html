@@ -1,6 +1,6 @@
 <main>
     <section>
-        <h2>Nos Produits</h2>
+        <h2>{{'Nos Produits' | transform}}</h2>
         <div class="product-container">
             @for(product of products;  track product.id; let i=$index;){
         <app-product-card [productInput]="product" (deleteProd)="onDeleteProduct($event)"></app-product-card>
