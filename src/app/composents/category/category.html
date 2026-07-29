@@ -1,17 +1,8 @@
 <section>
             <h2 class="category-title">Catégories</h2>
             <div class="categories">
-                <a href="" class="category-card" id="card">
-                    <img src="assets/images/homme.jpg" alt="categorie Homme">
-                    <span>Homme</span>
-                </a>
-                <a href="" class="category-card">
-                    <img src="assets/images/femme.jpg" alt="categorie Femme">
-                    <span>Femme</span>
-                </a>
-                <a href="" class="category-card">
-                    <img src="assets/images/enfants.jfif" alt="categorie Enfants">
-                    <span>Enfants</span>
-                </a>
+                @for(category of categories; track category.id; let i=$index){
+                <app-category-card></app-category-card>
+                }
             </div>
         </section>

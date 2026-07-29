@@ -8,6 +8,8 @@ import { AddProduct } from './composents/add-product/add-product';
 import { Admin } from './composents/admin/admin';
 import { Contact } from './composents/contact/contact';
 import { ProductDetails } from './composents/product-details/product-details';
+import { Category } from './composents/category/category';
+import { CategoryCard } from './composents/category-card/category-card';
 
 
 export const routes: Routes = [ 
@@ -20,5 +22,7 @@ export const routes: Routes = [
     { path: 'admin', component: Admin },
     { path: 'contact', component: Contact },
     { path: 'product-details/:id', component: ProductDetails },
-    { path: 'editProduct/:id', component: AddProduct }
+    { path: 'editProduct/:id', component: AddProduct },
+    { path: 'category', component: Category },
+    { path: 'category-card', component: CategoryCard },
 ];
