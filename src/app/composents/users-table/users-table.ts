@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { UserService } from '../../services/user-service';
 
 @Component({
   selector: 'app-users-table',
@@ -7,29 +8,20 @@ import { Component } from '@angular/core';
   styleUrl: './users-table.css',
 })
 export class UsersTable {
+  private userService = inject(UserService);
 
-   users: any[] = [];
+  users: any[] = [];
 
-  ngOnInit(): void {
 
-    const usersStorage = JSON.parse(localStorage.getItem('users') || '[]');
-
-    this.users = usersStorage.map((user: any, index: number) => ({
-      id: index + 1,
-      nom: user.nom,
-      prenom: user.prenom,
-      email: user.email,
-      role: user.role
-    }));
-
-  }
-
-  supprimerUser(index: number): void {
-
-  this.users.splice(index, 1);
-
-  localStorage.setItem('users', JSON.stringify(this.users));
+ngOnInit() {
+  this.userService.getAllUsers().subscribe({
+    next : (res: any) => {
+      this.users = res;
+    },
+    error : (err) => {
+      alert('Erreur lors de la récupération des utilisateurs : ' + err);
+    }
+});
 
 }
-
 }

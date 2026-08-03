@@ -4,7 +4,7 @@
 
         <div>
             <label for="productName">Nom du produit : </label>
-            <input type="text" name="productName" id="productName" [(ngModel)]="product.name" placeholder="Le nom de votre prouduit" #name="ngModel" minlength="3" required>
+            <input type="text" name="name" id="name" [(ngModel)]="product.name" placeholder="Le nom de votre prouduit" #name="ngModel" minlength="3" required>
             @if (name.invalid && (name.touched || name.dirty)){
                 @if(name.errors?.['required']){
                     <div class = "text-danger">
@@ -21,7 +21,7 @@
 
         <div>
             <label for="productPrice">Prix : </label>
-            <input type="number" name="productPrice" id="productPrice" [(ngModel)]="product.price"
+            <input type="number" name="price" id="price" [(ngModel)]="product.price"
                 placeholder="Le prix de votre produit" required>
         </div>
 
@@ -32,8 +32,8 @@
         </div>
 
         <div>
-            <label for="img">Image URL : </label>
-            <input type="text" name="img" id="img" [(ngModel)]="product.image" placeholder="image URL" required>
+            <label for="image">Image URL : </label>
+            <input type="text" name="image" id="image" [(ngModel)]="product.image" placeholder="image URL" required>
         </div>
 
         <button type="submit">{{isEditMode? 'Modifier': 'Ajouter'}}</button>

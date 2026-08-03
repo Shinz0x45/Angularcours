@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Products } from '../products/products';
+import { ProductService } from '../../services/product-service';
 
 
 @Component({
@@ -11,6 +12,7 @@ import { Products } from '../products/products';
 })
 export class ProductDetails {
   private ActivatedRoute = inject(ActivatedRoute)
+  private productService = inject(ProductService)
 
   productid!:number;
   products:any[] = [];
@@ -18,7 +20,16 @@ export class ProductDetails {
   
   ngOnInit(){
     this.productid = Number(this.ActivatedRoute.snapshot.paramMap.get('id'));
-    this.products = JSON.parse(localStorage.getItem('products') || '[]');
-    this.product = this.products.find((p:any) => p.id == this.productid)
+    this.productService.getProductById(this.productid).subscribe({
+      next : (res:any) => {
+        this.product = res;
+      },
+      error : (err:any) => {
+        console.log(err);
+      }
+    })
+
   }
+    //   this.products = JSON.parse(localStorage.getItem('products') || '[]');
+  //   this.product = this.products.find((p:any) => p.id == this.productid)
 }

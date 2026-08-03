@@ -1,7 +1,8 @@
 import { JsonPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { UserService } from '../../services/user-service';
 
 @Component({
   selector: 'app-inscription',
@@ -15,6 +16,8 @@ export class Inscription {
 
   // constructor(private formBuilder: FormBuilder) {}
   private formBuilder = inject(FormBuilder);
+  private userService = inject(UserService);
+  private router = inject(Router);
 
   ngOnInit(): void {
     this.inscriptionForm = this.formBuilder.group({
@@ -65,11 +68,24 @@ passwordMatchValidator(control: AbstractControl) {
       role: formValue.role || 'Client',
       dateInscription: new Date().toLocaleString('fr-FR')
     }
-    this.users = JSON.parse(localStorage.getItem('users') || '[]');
-    this.users.push(userFinal);
-    localStorage.setItem('users', JSON.stringify(this.users));
-    alert('Inscription réussie !');
-    this.inscriptionForm.reset()
+
+    this.userService.addUser(userFinal).subscribe({
+      next: (response) => {
+        alert('Inscription réussie !');
+        this.router.navigate(['/connexion']);
+        // alert('Inscription réussie !');
+        // this.inscriptionForm.reset()
+      },
+      error: (error) => {
+        console.error('Erreur lors de l\'inscription :', error);
+        alert('Erreur lors de l\'inscription !');
+      }
+    });
+    // this.users = JSON.parse(localStorage.getItem('users') || '[]');
+    // this.users.push(userFinal);
+    // localStorage.setItem('users', JSON.stringify(this.users));
+    // alert('Inscription réussie !');
+    // this.inscriptionForm.reset()
   }
 
 }

@@ -439,3 +439,15 @@ h2 {
 .site-description {
     margin-bottom: 20px;
 }
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+main {
+    padding-top: 60px;     /* hauteur du header */
+}
