@@ -15,8 +15,8 @@ export class UsersTable {
 
 ngOnInit() {
   this.userService.getAllUsers().subscribe({
-    next : (res: any) => {
-      this.users = res;
+    next: (res: any) => {
+    this.users = res;
     },
     error : (err) => {
       alert('Erreur lors de la récupération des utilisateurs : ' + err);

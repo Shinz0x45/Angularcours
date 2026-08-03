@@ -21,7 +21,7 @@ export class UserService {
 // Get avec JSON sever
   connexion(loginData:{ email: string, mdp: string }):Observable<any> 
   {
-    return this.httpClient.get<any[]>(`$(this.usersURL)?email=${loginData.email}&mdp=${loginData.mdp}`);
+    return this.httpClient.get<any[]>(`${this.userURL}?email=${loginData.email}&mdp=${loginData.mdp}`);
   }
 
   // Post pour login avec vrai database & backend

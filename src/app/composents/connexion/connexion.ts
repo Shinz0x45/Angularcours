@@ -11,6 +11,37 @@ import { UserService } from '../../services/user-service';
 })
 export class Connexion {
 
+  private formBuilder = inject(FormBuilder);
+  private router = inject(Router);
+  private userService = inject(UserService);
+
+  connexionForm!: FormGroup;
+  errorMsg: string = '';
+
+  ngOnInit(): void {
+    this.connexionForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      mdp: ['', Validators.required]
+    })
+  }
+
+  connexion() {
+    let formValue = this.connexionForm.value;
+    this.userService.connexion(formValue).subscribe({
+      next: (res: any) => {
+        console.log('Réponse du serveur :', res);
+        if (res.length > 0) {
+          localStorage.setItem('currentUser', JSON.stringify(res[0]))
+          this.errorMsg = '';
+          alert('Connexion réussie !');
+          this.router.navigate(['/']);
+        } else {
+          this.errorMsg = 'Email ou mot de passe incorrect.';
+        }
+      }
+    })
+  }
+}
   //   connexionForm!: FormGroup;
   //   users: any[] = [];
   //   emailInconnu = false;
@@ -59,37 +90,6 @@ export class Connexion {
   //   localStorage.setItem('currentUser', JSON.stringify(utilisateur));
   //   alert('Connexion réussie !');
   // }
-  private formBuilder = inject(FormBuilder);
-  private router = inject(Router);
-  private userService = inject(UserService);
-
-  connexionForm!: FormGroup;
-  errorMsg: string = '';
-
-  ngOnInit(): void {
-    this.connexionForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      mdp: ['', Validators.required]
-    })
-  }
-
-  connexion() {
-    let formValue = this.connexionForm.value;
-    this.userService.connexion(formValue).subscribe({
-      next: (res: any) => {
-        console.log('Réponse du serveur :', res);
-        if (res.length > 0) {
-          localStorage.setItem('currentUser', JSON.stringify(res[0]))
-          this.errorMsg = '';
-          alert('Connexion réussie !');
-          this.router.navigate(['/']);
-        } else {
-          this.errorMsg = 'Email ou mot de passe incorrect.';
-        }
-      }
-    })
-
-
     // Utilisation du localStorage pour la connexion
     // const users = JSON.parse(localStorage.getItem('users') || '[]');
 
@@ -106,5 +106,4 @@ export class Connexion {
     // } else {
     //   this.errorMsg = 'Email ou mot de passe incorrect.';
     // }
-  }
-}
+
