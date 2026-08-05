@@ -10,6 +10,7 @@ import { Contact } from './composents/contact/contact';
 import { ProductDetails } from './composents/product-details/product-details';
 import { Category } from './composents/category/category';
 import { CategoryCard } from './composents/category-card/category-card';
+import { adminGuard } from './guards/admin-guard';
 
 
 export const routes: Routes = [ 
@@ -18,11 +19,11 @@ export const routes: Routes = [
     { path: 'about', component: About },
     { path: 'connexion', component: Connexion },
     { path: 'inscription', component: Inscription },
-    { path: 'addProduct', component: AddProduct },
-    { path: 'admin', component: Admin },
+    { path: 'addProduct', component: AddProduct, canActivate: [adminGuard] },
+    { path: 'admin', component: Admin, canActivate: [adminGuard] },
     { path: 'contact', component: Contact },
     { path: 'product-details/:id', component: ProductDetails },
-    { path: 'editProduct/:id', component: AddProduct },
+    { path: 'editProduct/:id', component: AddProduct, canActivate: [adminGuard] },
     { path: 'category', component: Category },
     { path: 'category-card', component: CategoryCard },
 ];

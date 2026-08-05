@@ -34,10 +34,10 @@ export class UserService {
   //   return this.httpClient.get(this.userURL + '/' + id);
   // }
 
-  // supprimerUser(id:any) {
-  //   return this.httpClient.delete(this.userURL + '/' + id);
-  // }
-  // updateUserById(userObj:any) {
-  //   return this.httpClient.put(this.userURL + '/' +  userObj.id, userObj);
-  // }
+  supprimerUser(id:any) {
+    return this.httpClient.delete(this.userURL + '/' + id);
+  }
+  updateUserById(userObj:any) {
+    return this.httpClient.put(this.userURL + '/' +  userObj.id, userObj);
+  }
 }

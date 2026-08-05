@@ -1,6 +1,7 @@
 
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { map } from 'rxjs/internal/operators/map';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,16 @@ export class ProductService {
   private httpClient = inject(HttpClient)
 
   getAllProducts() {
-    return this.httpClient.get(this.productURL);
+    return this.httpClient.get<any[]>(this.productURL)
+    .pipe(
+      map(products  => {
+        return products.map(product=> ({
+          ...product,
+          nameProd: product.name.toUpperCase(),
+          priceWithTax: product.price * 1.19
+        }))
+      })
+    );
   }
 
   addProduct(productObj: any) {

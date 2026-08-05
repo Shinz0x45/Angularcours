@@ -5,6 +5,7 @@
             <th scope="col">Nom</th>
             <th scope="col">Description</th>
             <th scope="col">Prix</th>
+            <th scope="col">Prix TTC</th>
             <th scope="col">Actions</th>
         </tr>
     </thead>
@@ -12,9 +13,10 @@
         @for (product of products; track product.id; let i = $index) {
         <tr>
             <th scope="row">{{ product.id }}</th>
-            <td>{{ product.name }}</td>
+            <td>{{ product.nameProd }}</td>
             <td>{{ product.description }}</td>
             <td>{{ product.price }} €</td>
+            <td>{{ product.priceWithTax }} €</td>
             <td>
                 <button class="btn btn-sm btn-secondary" (click)="voirDetails(product.id)">Voir Details</button>
                 <button class="btn btn-sm btn-primary"(click)="edit(product.id)">Modifier</button>

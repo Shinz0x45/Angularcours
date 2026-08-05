@@ -31,10 +31,16 @@ export class Connexion {
       next: (res: any) => {
         console.log('Réponse du serveur :', res);
         if (res.length > 0) {
-          localStorage.setItem('currentUser', JSON.stringify(res[0]))
+          const user = res[0];
+          localStorage.setItem('currentUser', JSON.stringify(user));
           this.errorMsg = '';
           alert('Connexion réussie !');
-          this.router.navigate(['/']);
+          if (user.role === 'Admin') {
+            this.router.navigate(['/admin']);
+          }
+          else {
+            this.router.navigate(['/']);
+          };
         } else {
           this.errorMsg = 'Email ou mot de passe incorrect.';
         }
