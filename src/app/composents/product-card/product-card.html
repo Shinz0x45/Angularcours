@@ -1,12 +1,13 @@
-<section>
-    <div class="product-container">
-        <article tabindex="0" class="article-produit" id="test">
-            <i class="fa-solid fa-trash" (click)="delete(productInput.id)"></i> 
-            <h3 class="titre-produit">{{productInput.name}}</h3>
-            <img [src]="productInput.image" alt="Photo d'une {{productInput.name}}">
-            <p>{{productInput.description}}</p>
-            <p>Prix: {{productInput.price}} £</p>
-            <button type="button">Acheter</button>
-        </article>
-    </div>
-</section>
+<article tabindex="0" class="article-produit" id="test">
+    @if (productInput.isAvailable) {
+        <span class="badge-dispo">Disponible</span>
+    } @else {
+        <span class="badge">Rupture de stock</span>
+    }
+    <i class="fa-solid fa-trash" (click)="delete(productInput.id)"></i>
+    <h3 class="titre-produit">{{productInput.name}}</h3>
+    <img [src]="productInput.image" alt="Photo du {{productInput.name}}">
+    <p>{{productInput.description}}</p>
+    <p>Prix: {{productInput.price}} £</p>
+    <button type="button">Acheter</button>
+</article>

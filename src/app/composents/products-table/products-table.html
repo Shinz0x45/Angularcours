@@ -16,7 +16,7 @@
             <td>{{ product.nameProd }}</td>
             <td>{{ product.description }}</td>
             <td>{{ product.price }} €</td>
-            <td>{{ product.priceWithTax }} €</td>
+            <td>{{ product.priceWithTax | number:'1.2-2' }} €</td>
             <td>
                 <button class="btn btn-sm btn-secondary" (click)="voirDetails(product.id)">Voir Details</button>
                 <button class="btn btn-sm btn-primary"(click)="edit(product.id)">Modifier</button>

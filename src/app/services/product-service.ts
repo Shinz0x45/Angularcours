@@ -19,7 +19,8 @@ export class ProductService {
         return products.map(product=> ({
           ...product,
           nameProd: product.name.toUpperCase(),
-          priceWithTax: product.price * 1.19
+          priceWithTax: product.price * 1.19,
+          isAvailable: product.quantity > 0
         }))
       })
     );
